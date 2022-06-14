@@ -269,14 +269,14 @@ class Wumpus {
     }
 
     CalcBreezeAndStench() {
-        //if spaces neighbors have not already been calculated
+        //Se as células vizinhas ainda não foram calculadas
         if (!this.worldVisited[this.x][this.y].nearDanger) {
-            //if current space has a breeze, calculate odds of pit
+            //Se a célula tem breeze calcular a chance de ter um pit
             if (this.worldData[this.x][this.y].isBreeze) {
                 this.PitWumpusPercentage(true, false);
             }
 
-            //if current space has a stench, calculate odds of wumpus
+            //Se a célula tem breeze calcular a chance de ter o wumpus
             if (this.worldData[this.x][this.y].isStench && !isWumpusDead) {
                 this.PitWumpusPercentage(false, true);
             }
@@ -284,7 +284,7 @@ class Wumpus {
     }
 
     PitWumpusPercentage(pit, wumpus) {
-        //if up not visited, add 30% chance
+        // adicionar porcentagem de 30% de chance de visitar a esquerda se o campo não foi visitado
         if (this.y != 1 && !this.worldData[this.x][this.y - 1].isVisited) {
             if (pit)
                 this.worldVisited[this.x][this.y - 1].pitChance += 30;
@@ -293,7 +293,7 @@ class Wumpus {
                 this.worldVisited[this.x][this.y - 1].wumpusChance += 30;
         }
 
-        //if up not visited, add 30% chance
+        // adicionar porcentagem de 30% de chance de visitar abaixo se o campo não foi visitado
         if (this.x != 4 && !this.worldData[this.x + 1][this.y].isVisited) {
             if (pit)
                 this.worldVisited[this.x + 1][this.y].pitChance += 30;
@@ -302,7 +302,7 @@ class Wumpus {
                 this.worldVisited[this.x + 1][this.y].wumpusChance += 30;
         }
 
-        //if up not visited, add 30% chance
+        // adicionar porcentagem de 30% de chance de visitar acima se o campo não foi visitado
         if (this.x != 1 && !this.worldData[this.x - 1][this.y].isVisited) {
             if (pit)
                 this.worldVisited[this.x - 1][this.y].pitChance += 30;
@@ -311,7 +311,7 @@ class Wumpus {
                 this.worldVisited[this.x - 1][this.y].wumpusChance += 30;
         }
 
-        //if up not visited, add 30% chance
+        // adicionar porcentagem de 30% de chance de visitar abaixo se o campo não foi visitado
         if (this.y != 4 && !this.worldData[this.x][this.y + 1].isVisited) {
             if (pit)
                 this.worldVisited[this.x][this.y + 1].pitChance += 30;
