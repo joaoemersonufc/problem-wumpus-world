@@ -311,7 +311,7 @@ class Wumpus {
                 this.worldVisited[this.x - 1][this.y].wumpusChance += 30;
         }
 
-        // adicionar porcentagem de 30% de chance de visitar abaixo se o campo não foi visitado
+        // adicionar porcentagem de 30% de chance de visitar a direita se o campo não foi visitado
         if (this.y != 4 && !this.worldData[this.x][this.y + 1].isVisited) {
             if (pit)
                 this.worldVisited[this.x][this.y + 1].pitChance += 30;
@@ -369,8 +369,6 @@ class Wumpus {
                     isShooting = false;
                 } else if (cell.isPlayer)
                     img = "player.png";
-                else if (cell.isPit && cell.isBreeze)
-                    img = "pit.png";
                 else if (cell.isPit)
                     img = "pit.png";
                 else if (cell.isStench && cell.isBreeze && cell.isGold)
